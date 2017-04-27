@@ -20,7 +20,11 @@
           html_str += '<h2>' + dex.name + '</h2>';
           html_str += '<img src="http://pokeapi.co/media/img/' + info + '.png" alt="">';
           html_str += '<h3>Types<h3>';
-          html_str += '<ul><li>' + dex.types[0].name + '</li><li>' + dex.types[1].name + '</li>';
+          html_str += '<ul>';
+          for(var i = 0; i < dex.types.length; i++){
+            html_str += '<li>' + dex.types[i].name + '</li>';
+          }
+          html_str += '</ul>';
           html_str += '<h3>Height</h3>';
           html_str += '<p>' + dex.height + '</p>';
           html_str += '<h3>Weight</h3>';
@@ -31,7 +35,6 @@
           return html_str;
         });
       };
-
 
       $(document).ready(function(){
         for(var i = 1; i < 153; i++){
