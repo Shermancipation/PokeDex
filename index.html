@@ -7,10 +7,11 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script>
 
-      function getInfo(){
-        var srcval = $('.pokeImg').attr('id');
-        console.log("srcval is " + srcval);
-        return srcval;
+
+
+      function populateDiv(str){
+        console.log(str);
+        $("#pokedex").html(str);
       };
 
       function pokeDex(info){
@@ -26,21 +27,20 @@
           html_str += '<p>' + dex.weight + '</p>';
           console.log("info is " + info);
           console.log("html_str is " + html_str);
+          populateDiv(html_str);
           return html_str;
         });
       };
 
-      function populateDiv(str){
-        console.log(str);
-        $("#pokedex").append(str);
-      };
 
       $(document).ready(function(){
         for(var i = 1; i < 153; i++){
           $('#pokemon').append('<img class="pokeImg" id="' + i + '" src="http://pokeapi.co/media/img/' + i + '.png" alt="">');
         }
-        $(document).on('click', '.pokeImg', function(){
-          populateDiv(pokeDex(getInfo()));
+
+        $(document).on('click', '.pokeImg ', function(){
+          var id = ($(this).attr("id"));
+          pokeDex(id);
         });
       });
 
